@@ -62,12 +62,12 @@ export default {
                                         var gitalk = new Gitalk({
                                                 clientID: config.gitalk.clientid,
                                                 clientSecret: config.gitalk.clientsecret,
-                                                repo:config.repo,
+                                                repo:config.gitalk.repo,
                                                 owner: config.owner,
                                                 admin: [config.owner],
                                                 id: '#'+this.id,
                                                 labels:[config.gitalk.label],
-                                                createIssueManually:true,
+                                                createIssueManually:config.repo!=config.gitalk.repo,
                                                 distractionFreeMode: false
                                         })
                                         gitalk.render('gitalk')
@@ -76,13 +76,16 @@ export default {
                 },
                 showGitalk() {
                         let gitalkLabels = 0;
-                        let gitalkLabel   = this.$store.state.config.gitalk.label;
+                        let gitalk   = this.$store.state.config.gitalk;
+                        let disable = false;
                         this.article.labels.forEach(label => {
-                                if(label.name == '#'+this.id || label.name ==gitalkLabel){
+                                if(label.name == '#'+this.id || label.name ==gitalk.label){
                                         gitalkLabels ++ ;
+                                }else if(label.name == gitalk.disable){
+                                        disable = true;
                                 }
                         });
-                        return gitalkLabels == 2;
+                        return !disable && gitalkLabels == 2;
                 },
                 initPage(){
                         this.pageparam .prev=0;

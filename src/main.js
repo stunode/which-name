@@ -14,15 +14,17 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
         state:{
                 config: {
-                        title:'darren',
-                        owner: 'ydq',
-                        repo: 'gblog',
+                        title:'gblog',//博客的标题
+                        owner: 'github_username',//你的github的用户名
+                        repo: 'github_repo',//你要读取issues的仓库名称
                         per_page: 8,
                         access_token:'your_access_token',
                         gitalk:{
-                                clientid:'your_clientid',
-                                clientsecret:'your_clientsecret',
-                                label:'gitalk'
+                                repo:'github_comment_repo',//你要作为评论的仓库名称，可以和文章仓库相同，当和文章仓库相同时，每次发布一篇文章，需要自己手动打标签才能开启评论
+                                clientid:'your_clientid',//申请的app clientid
+                                clientsecret: 'your_clientsecret',//申请的app clientsecret
+                                label:'gitalk',//开启评论的标签名称
+                                disable:'notalk'//文章禁止评论的标签
                         }
                 }
         }

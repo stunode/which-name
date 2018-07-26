@@ -11,7 +11,7 @@
                                 <tr v-for="(article,i) in articles" :key="article.number">
                                         <td class="date">{{new Date(article.created_at).format('M/dd')}}</td>
                                         <td colspan="3">
-                                                <router-link :to="'/post/'+article.number" :class="{badge:article.comments}" :data-badge="article.comments">{{article.title}}</router-link>
+                                                <router-link :to="'/post/'+article.number" :class="{badge:showcommentCount() && article.comments}" :data-badge="article.comments">{{article.title}}</router-link>
                                                 <router-link v-for="label in labels(i)" :to="'/tag/'+label" :key="label" class="label d-inline-block mx-1">{{label}}</router-link>
                                         </td>
                                 </tr>
@@ -118,13 +118,16 @@ export default {
                 },
                 labels(i){
                         let artLabels = [];
-                        let gitalkLabel   = this.$store.state.config.gitalk.label;
+                        let gitalk   = this.$store.state.config.gitalk;
                         this.articles[i].labels.forEach(label => {
-                                if(!/^#\d+$/.test(label.name) && label.name !=gitalkLabel){
+                                if(!/^#\d+$/.test(label.name) && label.name !=gitalk.label && label.name !=gitalk.disable){
                                         artLabels.push(label.name)
                                 }
                         });
                         return artLabels;
+                },
+                showcommentCount(){
+                        return this.$store.state.config.gitalk.repo == this.$store.state.config.repo
                 }
         }
 }
