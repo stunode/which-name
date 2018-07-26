@@ -84,7 +84,10 @@ const store = new Vuex.Store({
 
 由于某些原因，**如果你要将构建打包后的文件上传到github，使用github的pages服务的话，建议将你打包好的文件中的三个key (`access_token`、`clientid`和`clientsecret`)用逗号之类的隔开**，否则github检测到你提交的代码中有你的key的话会导致key失效。
 
+因为使用了vue-router的html5 push-state模式，所以为了让github等访问任意URL都能指向默认的html文件，因此你需要将`index.html`修改为`404.html`
+
 操作如下：
 
 - 用文本工具打开你的dist/js/app.xxxxx.js  和 app.xxxx.js.map 文件
 - 分别搜索你的三个key，假设是 `abcdefg`，当搜索到了之后 改成`abc"+"defg`
+- 将 dist/index.html 修改为 dist/404.html
