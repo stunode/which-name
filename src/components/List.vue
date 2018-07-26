@@ -91,7 +91,7 @@ export default {
                 loadList() {
                         var config   = this.$store.state.config;
                         this.pageparam.curr = this.page||1;
-                        document.title = this.pageparam.curr==1?'':('第'+this.pageparam.curr+'页') +config.title;
+                        document.title = (this.pageparam.curr==1?'':('第'+this.pageparam.curr+'页 - '))+ (this.tag?'标签:'+tag+' - ':'')+ (this.query?'搜索:'+query+' - ':'') +config.title;
                         fetch(this.api())
                         .then(resp=>{
                                 resp.status==200&& this.parsePageLink(resp.headers.get('Link'))

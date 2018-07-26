@@ -2,6 +2,8 @@
 
 ---
 
+示例：https://darren.work
+
 #### 准备工作：
 
 1. 你需要有一个github账号（感觉是句废话，当看到这里你应该很大程度上已经拥有了一个Github账号）
@@ -90,4 +92,4 @@ const store = new Vuex.Store({
 
 - 用文本工具打开你的dist/js/app.xxxxx.js  和 app.xxxx.js.map 文件
 - 分别搜索你的三个key，假设是 `abcdefg`，当搜索到了之后 改成`abc"+"defg`
-- 将 dist/index.html 修改为 dist/404.html
+- 将 dist/index.html 修改为 dist/404.html，如果你的项目下面有README.md文件的话，则需要同时保留index.html和404.html
