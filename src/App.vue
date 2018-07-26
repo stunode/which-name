@@ -14,7 +14,7 @@
                 <div class="body my-2"><transition><router-view></router-view></transition></div>
                 
                 <div class="footer centered">
-                        <p>© 2018  invictus maneo. power by {{title}}.</p>
+                        <p>© 2018  invictus maneo. power by <a href="https://github.com/ydq/gblog" target="_blank">gblog</a>.</p>
                 </div>
 
                 <a href="javascript:void(0)" class="gotop tooltip tooltip-left btn" data-tooltip="返回顶部" @click="gotop"><i class="icon icon-upward"></i></a>
