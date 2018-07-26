@@ -65,7 +65,7 @@ export default {
                         this.alert.title = title;
                         this.alert.active = true;
                 },
-                search(e){
+                search(){
                         if(this.searchkw){
                                 this.$router.push('/search/'+this.searchkw)
                         } else {
