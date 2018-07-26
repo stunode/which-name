@@ -19,7 +19,7 @@ git clone git@github.com:ydq/gblog.git
 cd gblog
 
 # 修改src/main.js 中的config部分
-mv src/main.js
+vi src/main.js
 
 npm install
 #本地运行
