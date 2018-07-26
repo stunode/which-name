@@ -17,8 +17,8 @@ const store = new Vuex.Store({
                         title:'gblog',//博客的标题
                         owner: 'github_username',//你的github的用户名
                         repo: 'github_repo',//你要读取issues的仓库名称
-                        per_page: 8,
-                        access_token:'your_access_token',
+                        per_page: 10,//列表页面每页分页条数
+                        access_token: 'your_access_token',//你申请的access_token
                         gitalk:{
                                 repo:'github_comment_repo',//你要作为评论的仓库名称，可以和文章仓库相同，当和文章仓库相同时，每次发布一篇文章，需要自己手动打标签才能开启评论
                                 clientid:'your_clientid',//申请的app clientid
