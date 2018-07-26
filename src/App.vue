@@ -5,9 +5,9 @@
                                 <router-link to="/" class="navbar-brand mr-2 tooltip tooltip-right" :data-tooltip="title">{{title}}</router-link>
                         </section>
                         <section class="navbar-section">
-                                <form class="input-group input-inline" action="">
-                                        <input class="form-input" type="search" placeholder="搜索" v-model="searchkw" @keyup.enter="search">
-                                        <button class="btn btn-primary input-group-btn" @click="search" type="button"><i class="icon icon-search"></i></button>
+                                <form class="input-group input-inline" action="" @submit.prevent="search">
+                                        <input class="form-input" type="search" placeholder="搜索" v-model="searchkw" @keyup.enter.prevent="search">
+                                        <button class="btn btn-primary input-group-btn" @click.prevent="search" type="button"><i class="icon icon-search"></i></button>
                                 </form>
                         </section>
                 </header>
@@ -65,7 +65,7 @@ export default {
                         this.alert.title = title;
                         this.alert.active = true;
                 },
-                search(){
+                search(e){
                         if(this.searchkw){
                                 this.$router.push('/search/'+this.searchkw)
                         } else {
