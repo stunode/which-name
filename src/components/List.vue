@@ -115,7 +115,6 @@ export default {
                         while ((rs = reg.exec(link)) != null){
                                 this.pageparam[rs[2]] = rs[1];
                         }
-                        console.log(this.pageparam)
                 },
                 labels(i){
                         let artLabels = [];
