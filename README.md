@@ -48,13 +48,10 @@ const store = new Vuex.Store({
                         repo: 'github_repo',//你要读取issues的仓库名称
                         per_page: 10,//列表页面每页分页条数
                         access_token: 'your_access_token',//你申请的access_token
-                        gitalk:{
-                                repo:'github_comment_repo',//你要作为评论的仓库名称，可以和文章仓库相同，当和文章仓库相同时，每次发布一篇文章，需要自己手动打标签才能开启评论
-                                clientid:'your_clientid',//申请的app clientid
-                                clientsecret: 'your_clientsecret',//申请的app clientsecret
-                                label:'gitalk',//开启评论的标签名称
-                                disable:'notalk'//文章禁止评论的标签
-                        }
+                        clientid:'your_clientid',//申请的app clientid
+                        clientsecret: 'your_clientsecret',//申请的app clientsecret
+                        talk : true,//全局是否开启评论功能
+                        disable_talk: 'notalk'//文章禁止评论的标签
                 }
         }
 })
@@ -65,30 +62,17 @@ const store = new Vuex.Store({
 - repo：你存放文章的仓库
 - per_page：列表每页数量
 - access_token：申请的access_token
-- gitalk.repo：评论用的仓库名称
-- gitalk.clientid：申请的app的clientid
-- gitalk.clientsecret：申请的app的clientsecret
-- gitalk.label：评论issues打的标签
-- gitalk.notalk：文章禁止评论打的标签（这个标签要打在文章的issues上才生效）
+- clientid：申请的app的clientid
+- clientsecret：申请的app的clientsecret
+- talk：全局评论开关
+- disable_talk：文章禁止评论打的标签
 
 
 
 #### 说明：
 
-- 当repo和gitalk.repo相同时
+- 文章发布后默认允许评论，若要单独关闭谋篇文章的评论，则需要打上disable_talk配置的标签，当然如果全局都不想开启评论，则需要设置talk属性为false
 
-  - 优点：你只需要一个仓库，其次在文章列表页面可以显示当前的评论数
-
-  - 缺点：发布文章后需要手动开启评论，需要在文章的issues手动打上两个标签才能开启评论
-
-    > 第一个标签是#号加上当前issues的id，例如当前id是88，那么请先打上 "#88" 的标签
-    >
-    > 第二个标签是配置文件中gitalk.label的标签
-
-- 当repo和gitalk.repo不同时
-
-  - 优点：当管理员访问文章页面后可以自动开启评论，无需手动打标签，当然必须要是作者亲自访问一次
-  - 缺点：首先你需要两个仓库，其次博客在列表页面无法显示当前评论数
 
 #### 友情提示： 
 

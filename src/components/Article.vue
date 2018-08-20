@@ -27,7 +27,7 @@ export default {
         },
         computed:{
                 content(){
-                        return this.article.body?marked(this.article.body,{highlight:code=>hljs.highlightAuto(code).value}).replaceAll('<pre>','<pre class="code">'):'';
+                        return this.article.body?marked(this.article.body,{highlight:code=>window.hljs.highlightAuto(code).value}).replaceAll('<pre>','<pre class="code">'):'';
                 },
                 fmtDate(){
                         return this.article.created_at?new Date(this.article.created_at).format("yy/MM/dd HH:mm"):'';
@@ -60,14 +60,13 @@ export default {
                                 document.title = json.title;
                                 if(this.showGitalk()){
                                         var gitalk = new Gitalk({
-                                                clientID: config.gitalk.clientid,
-                                                clientSecret: config.gitalk.clientsecret,
-                                                repo:config.gitalk.repo,
+                                                clientID: config.clientid,
+                                                clientSecret: config.clientsecret,
+                                                repo:config.repo,
                                                 owner: config.owner,
                                                 admin: [config.owner],
-                                                id: '#'+this.id,
-                                                labels:[config.gitalk.label],
-                                                createIssueManually:config.repo!=config.gitalk.repo,
+                                                number:this.id*1,
+                                                createIssueManually:false,
                                                 distractionFreeMode: false
                                         })
                                         gitalk.render('gitalk')
@@ -75,17 +74,9 @@ export default {
                         })
                 },
                 showGitalk() {
-                        let gitalkLabels = 0;
-                        let gitalk   = this.$store.state.config.gitalk;
-                        let disable = false;
-                        this.article.labels.forEach(label => {
-                                if(label.name == '#'+this.id || label.name ==gitalk.label){
-                                        gitalkLabels ++ ;
-                                }else if(label.name == gitalk.disable){
-                                        disable = true;
-                                }
-                        });
-                        return !disable && gitalkLabels == 2;
+                        let talk   = this.$store.state.config.talk;
+                        let notalk   = this.$store.state.config.disable_talk;
+                        return talk && !this.article.labels.filter(label=>label.name == notalk).length;
                 },
                 initPage(){
                         this.pageparam .prev=0;
