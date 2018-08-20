@@ -81,6 +81,7 @@ export default {
 
 <style lang="scss">
 @import "gblog.scss";
+::-webkit-scrollbar{width:3px;height:3px}::-webkit-scrollbar-track-piece{background-color:rgba(0,0,0,0)}::-webkit-scrollbar-thumb{background:#ccc}::-webkit-scrollbar-thumb:vertical:hover,::-webkit-scrollbar-thumb:horizontal:hover{background:#999}
 .v-move,.v-enter-active,.v-leave-active{transition: all .3s ease;}
 .v-leave-active,.v-enter-active{position:absolute;width:100%}
 .v-enter,.v-leave-active{transform:translateY(50px);opacity:0;}

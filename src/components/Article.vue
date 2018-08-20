@@ -14,8 +14,11 @@
 
 <script>
 import 'gitalk/dist/gitalk.css'
+import 'highlight.js/styles/github.css'
+import 'highlight.js/styles/github-gist.css'
 import marked from "marked";
 import Gitalk from 'gitalk'
+import hljs from 'highlight.js';
 export default {
         props:['id'],
         data(){
@@ -27,7 +30,7 @@ export default {
         },
         computed:{
                 content(){
-                        return this.article.body?marked(this.article.body,{highlight:code=>window.hljs.highlightAuto(code).value}).replaceAll('<pre>','<pre class="code">'):'';
+                        return this.article.body?marked(this.article.body,{highlight:code=>hljs.highlightAuto(code).value}).replaceAll('<pre>','<pre class="code">'):'';
                 },
                 fmtDate(){
                         return this.article.created_at?new Date(this.article.created_at).format("yy/MM/dd HH:mm"):'';
