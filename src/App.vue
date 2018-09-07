@@ -41,7 +41,7 @@ export default {
         name: 'app',
         data(){
                 return {
-                        title:'GBlog',
+                        title:'which name',
                         searchkw:'',
                         alert:{
                                 title:'',

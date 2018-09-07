@@ -14,14 +14,14 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
         state:{
                 config: {
-                        title:'Gblog',//博客的标题
-                        owner: 'your_username',//你的github的用户名
-                        repo: 'your_blog_repository',//你要读取issues的仓库名称
+                        title:'which name',//博客的标题
+                        owner: 'liuyuyu',//你的github的用户名
+                        repo: 'which-name',//你要读取issues的仓库名称
                         per_page: 10,//列表页面每页分页条数
                         access_token: 'your_access_token',//你申请的access_token
                         clientid: 'your_clientid',//申请的app clientid
                         clientsecret: 'your_clientsecret',//申请的app clientsecret
-                        talk : true,//全局是否开启评论功能
+                        talk : false,//全局是否开启评论功能
                         disable_talk: 'notalk'//文章禁止评论的标签
                 }
         }

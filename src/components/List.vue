@@ -8,11 +8,12 @@
                                 <tr key="tag" v-else-if="!!tag">
                                         <td colspan="4">标签：<span class="label label-rounded">{{tag}}</span></td>
                                 </tr>
-                                <tr v-for="(article,i) in articles" :key="article.number">
+                                <tr v-for="(article) in articles" :key="article.number">
                                         <td class="date">{{new Date(article.created_at).format('M/dd')}}</td>
                                         <td colspan="3">
-                                                <router-link :to="'/post/'+article.number" :class="{badge:showCommentsCount(article)}" :data-badge="article.comments">{{article.title}}</router-link>
-                                                <router-link v-for="label in labels(i)" :to="'/tag/'+label" :key="label" class="label d-inline-block mx-1">{{label}}</router-link>
+                                                <a :href="article.html_url">{{article.title}}:{{article.body}}</a>
+                                                <!-- <router-link :to="'/post/'+article.number" :class="{badge:showCommentsCount(article)}" :data-badge="article.comments">{{article.title}}</router-link>
+                                                <router-link v-for="label in labels(i)" :to="'/tag/'+label" :key="label" class="label d-inline-block mx-1">{{label}}</router-link> -->
                                         </td>
                                 </tr>
                                 <tr key="page" v-if="!loading && (pageparam.last>1 || pageparam.curr > 1)">
@@ -73,7 +74,7 @@ export default {
                         } else if(this.tag){
                                 api += '/search/issues?q=repo:'+config.owner+'/'+config.repo+'+author:'+config.owner+'+state:open+label:' + this.tag
                         } else {
-                                 api += '/repos/'+config.owner+'/'+config.repo+'/issues?creator=' + config.owner;
+                                 api += '/repos/'+config.owner+'/'+config.repo+'/issues?creator=' + config.owner+'&state:open';
                         }
                         this.pageparam.curr =  this.page||1;
                         api += '&per_page=' + config.per_page + '&page='+ this.pageparam.curr;
