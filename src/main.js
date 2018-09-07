@@ -15,7 +15,7 @@ const store = new Vuex.Store({
     state: {
         config: {
             title: 'which name',//博客的标题
-            owner: 'liuyuyu',//你的github的用户名
+            owner: 'which-name',//你的github的用户名
             repo: 'which-name',//你要读取issues的仓库名称
             per_page: 10,//列表页面每页分页条数
             access_token: 'your_access_token',//你申请的access_token
@@ -28,7 +28,7 @@ const store = new Vuex.Store({
 })
 
 const router = new VueRouter({
-    mode: 'history',
+    mode: 'hash',
     routes: [
         { path: '/which-name', component: List, props: true },
         { path: '/which-name/page', component: List, props: true },
