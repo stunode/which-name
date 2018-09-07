@@ -70,7 +70,7 @@ export default {
         },
         search() {
             if (this.searchkw) {
-                this.$router.push('/search/' + this.searchkw)
+                this.$router.push('/which-name/search/' + this.searchkw)
             } else {
                 this.dialog('请输入关键词再进行搜索')
             }

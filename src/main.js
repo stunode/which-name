@@ -30,14 +30,14 @@ const store = new Vuex.Store({
 const router = new VueRouter({
     mode: 'history',
     routes: [
-        { path: '/', component: List, props: true },
-        { path: '/page', component: List, props: true },
-        { path: '/page/:page(\\d+)', component: List, props: true },
-        { path: '/tag/:tag', component: List, props: true },
-        { path: '/tag/:tag/:page(\\d+)', component: List, props: true },
-        { path: '/search/:query', component: List, props: true },
-        { path: '/search/:query/:page(\\d+)', component: List, props: true },
-        { path: '/post/:id(\\d+)', component: Article, props: true },
+        { path: '/which-name', component: List, props: true },
+        { path: '/which-name/page', component: List, props: true },
+        { path: '/which-name/page/:page(\\d+)', component: List, props: true },
+        { path: '/which-name/tag/:tag', component: List, props: true },
+        { path: '/which-name/tag/:tag/:page(\\d+)', component: List, props: true },
+        { path: '/which-name/search/:query', component: List, props: true },
+        { path: '/which-name/search/:query/:page(\\d+)', component: List, props: true },
+        { path: '/which-name/post/:id(\\d+)', component: Article, props: true },
         { path: '/*', component: Error404 }
     ]
 });

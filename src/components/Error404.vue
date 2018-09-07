@@ -9,7 +9,7 @@ export default {
     name: "Error404",
     data() {
         return {
-            backurl: "/"
+            backurl: "/which-name"
         };
     },
     beforeRouteEnter(to, from, next) {
