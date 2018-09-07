@@ -12,39 +12,39 @@ Vue.use(VueRouter);
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
-        state:{
-                config: {
-                        title:'which name',//博客的标题
-                        owner: 'liuyuyu',//你的github的用户名
-                        repo: 'which-name',//你要读取issues的仓库名称
-                        per_page: 10,//列表页面每页分页条数
-                        access_token: 'your_access_token',//你申请的access_token
-                        clientid: 'your_clientid',//申请的app clientid
-                        clientsecret: 'your_clientsecret',//申请的app clientsecret
-                        talk : false,//全局是否开启评论功能
-                        disable_talk: 'notalk'//文章禁止评论的标签
-                }
+    state: {
+        config: {
+            title: 'which name',//博客的标题
+            owner: 'liuyuyu',//你的github的用户名
+            repo: 'which-name',//你要读取issues的仓库名称
+            per_page: 10,//列表页面每页分页条数
+            access_token: 'your_access_token',//你申请的access_token
+            clientid: 'your_clientid',//申请的app clientid
+            clientsecret: 'your_clientsecret',//申请的app clientsecret
+            talk: false,//全局是否开启评论功能
+            disable_talk: 'notalk'//文章禁止评论的标签
         }
+    }
 })
 
 const router = new VueRouter({
-        mode: 'history',
-        routes: [
-                { path: '/', component: List, props: true },
-                { path: '/page', component: List, props: true },
-                { path: '/page/:page(\\d+)', component: List, props: true },
-                { path: '/tag/:tag', component: List, props: true },
-                { path: '/tag/:tag/:page(\\d+)', component: List, props: true },
-                { path: '/search/:query', component: List, props: true },
-                { path: '/search/:query/:page(\\d+)', component: List, props: true },
-                { path: '/post/:id(\\d+)', component: Article, props: true },
-                { path: '/*', component: Error404}
-        ]
+    mode: 'history',
+    routes: [
+        { path: '/', component: List, props: true },
+        { path: '/page', component: List, props: true },
+        { path: '/page/:page(\\d+)', component: List, props: true },
+        { path: '/tag/:tag', component: List, props: true },
+        { path: '/tag/:tag/:page(\\d+)', component: List, props: true },
+        { path: '/search/:query', component: List, props: true },
+        { path: '/search/:query/:page(\\d+)', component: List, props: true },
+        { path: '/post/:id(\\d+)', component: Article, props: true },
+        { path: '/*', component: Error404 }
+    ]
 });
 
 
 new Vue({
-        router,
-        store,
-        render: h => h(App)
+    router,
+    store,
+    render: h => h(App)
 }).$mount('#app')
