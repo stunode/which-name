@@ -95,8 +95,7 @@ export default {
                     config.owner +
                     "/" +
                     config.repo +
-                    "/issues?creator=" +
-                    config.owner +
+                    "/issues"+
                     "&state:open";
             }
             this.pageparam.curr = this.page || 1;
