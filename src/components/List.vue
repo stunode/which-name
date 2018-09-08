@@ -12,8 +12,8 @@
                 <td class="date">{{new Date(article.created_at).format('M/dd')}}</td>
                 <td colspan="3">
                     <div class="accordion">
-                        <input type="checkbox" id="accordion-1" name="accordion-checkbox" hidden>
-                        <label class="accordion-header" for="accordion-1">
+                        <input type="checkbox" v-bind:id="article.number" name="accordion-checkbox" hidden>
+                        <label class="accordion-header" v-bind:for="article.number">
                             <i class="icon icon-arrow-right mr-1"></i>
                             {{article.title}}
                             <span class="label" v-for="(label) in article.labels" :key="label.id" v-bind:style="{'background-color':label.color}">
@@ -91,7 +91,6 @@ export default {
                     config.owner +
                     "/" +
                     config.repo +
-                    
                     "+state:open+in:title,body+" +
                     this.query;
             } else if (this.tag) {
@@ -100,7 +99,6 @@ export default {
                     config.owner +
                     "/" +
                     config.repo +
-                    
                     "+state:open+label:" +
                     this.tag;
             } else {
@@ -110,7 +108,7 @@ export default {
                     "/" +
                     config.repo +
                     "/issues"+
-                    "&state:open";
+                    "?state:open";
             }
             this.pageparam.curr = this.page || 1;
             api += "&per_page=" + config.per_page + "&page=" + this.pageparam.curr;
