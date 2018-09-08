@@ -11,7 +11,23 @@
             <tr v-for="(article) in articles" :key="article.number">
                 <td class="date">{{new Date(article.created_at).format('M/dd')}}</td>
                 <td colspan="3">
-                    <a :href="article.html_url">{{article.title}}:{{article.body}}</a>
+                    <div class="accordion">
+                        <input type="checkbox" id="accordion-1" name="accordion-checkbox" hidden>
+                        <label class="accordion-header" for="accordion-1">
+                            <i class="icon icon-arrow-right mr-1"></i>
+                            {{article.title}}
+                            <span class="label" v-for="(label) in article.labels" :key="label.id" v-bind:style="{'background-color':label.color}">
+                                {{label.name}}
+                            </span>
+                            <button class="btn btn-link">
+                                <a :href="article.html_url" target="_blank">源地址</a>
+                            </button>
+                        </label>
+                        <div class="accordion-body">
+                            <!-- Accordions content -->
+                            {{article.body}}
+                        </div>
+                    </div>
                     <!-- <router-link :to="'/post/'+article.number" :class="{badge:showCommentsCount(article)}" :data-badge="article.comments">{{article.title}}</router-link>
                                                 <router-link v-for="label in labels(i)" :to="'/tag/'+label" :key="label" class="label d-inline-block mx-1">{{label}}</router-link> -->
                 </td>
@@ -75,8 +91,7 @@ export default {
                     config.owner +
                     "/" +
                     config.repo +
-                    "+author:" +
-                    config.owner +
+                    
                     "+state:open+in:title,body+" +
                     this.query;
             } else if (this.tag) {
@@ -85,8 +100,7 @@ export default {
                     config.owner +
                     "/" +
                     config.repo +
-                    "+author:" +
-                    config.owner +
+                    
                     "+state:open+label:" +
                     this.tag;
             } else {
